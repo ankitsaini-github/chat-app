@@ -10,7 +10,7 @@ const Search = () => {
           placeholder="Search user ..."
         />
       </div>
-      <div className="userchat p-3 flex items-center gap-3 text-amber-200 cursor-pointer hover:bg-amber-800">
+      <div className="userchat p-3 flex items-center gap-3 text-amber-200 cursor-pointer hover:bg-amber-600">
         <img
           src="https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg"
           alt=""

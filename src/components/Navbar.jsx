@@ -3,7 +3,7 @@ import React from "react";
 const Navbar = () => {
   return (
     <div className="Navbar flex items-center bg-orange-950 h-14 p-3 justify-between text-amber-200">
-      <span className="logo text-xl font-bold">Sandesh</span>
+      <span className="logo text-xl font-bold hidden md:block">Sandesh</span>
       <div className="user flex gap-4">
         <img
           src="https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg"

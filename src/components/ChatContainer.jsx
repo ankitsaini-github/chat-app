@@ -7,7 +7,7 @@ import more from '../assets/more.png'
 const ChatContainer = () => {
   return (
     <div className='chat flex-2'>
-      <div className="chatinfo h-14 flex items-center justify-between p-3 bg-amber-800 text-amber-300">
+      <div className="chatinfo h-14 flex items-center justify-between p-3 bg-yellow-900 text-amber-300">
         <span>Ankit</span>
         <div className="chaticon flex gap-4">
           <img src={adduser} alt="" className=' h-5 cursor-pointer'/>
