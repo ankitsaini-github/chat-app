@@ -110,10 +110,11 @@ const Register = () => {
           </button>
           {error && <p className=" text-red-600">{error}</p>}
           <p className=" mt-3 text-amber-500 text-lg">
-            You do have an account? <Link to='/login' className="underline hover:text-orange-500">Log in</Link>.
+            Have an account? <Link to='/login' className="underline hover:text-orange-500">Log in</Link>.
           </p>
         </form>
       </div>
+      <div className="absolute bottom-0 flex items-center justify-center bg-amber-700 w-full p-2"><p className="text-white text-xs">&copy; 2024 | Project by Ankit Saini</p></div>
     </div>
   );
 };
