@@ -31,7 +31,7 @@ const Message = () => {
         <img
           src="https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg"
           alt=""
-          className={`w-1/2 rounded-lg py-3 px-4 ${
+          className={`w-1/2 rounded-lg py-1 px-1 ${
             owner ? "rounded-se-none bg-amber-500" : "rounded-ss-none bg-white"
           }`}
         />

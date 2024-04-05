@@ -5,7 +5,7 @@ import Search from '../components/Search'
 
 const Sidebar = () => {
   return (
-    <div className='sidebar flex-1 bg-amber-900'>
+    <div className='sidebar flex-1 bg-slate-100'>
       <Navbar/>
       <Search/>
       <Chats/>
