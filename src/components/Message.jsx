@@ -42,7 +42,7 @@ const Message = ({ message }) => {
         {message.text.length>0 &&<p
           className={`rounded-lg py-2 px-4 max-w-max ${
             owner
-              ? "rounded-se-none bg-amber-500 text-white"
+              ? "rounded-se-none bg-gradient-to-br from-amber-400 to-orange-500 text-white"
               : "rounded-ss-none bg-white"
           }`}
         >
@@ -53,7 +53,7 @@ const Message = ({ message }) => {
                 src={message.img}
                 alt=""
                 className={`w-1/2 rounded-lg py-1 px-1 ${
-                  owner ? "rounded-se-none bg-amber-500" : "rounded-ss-none bg-white"
+                  owner ? "rounded-se-none bg-gradient-to-br from-amber-400 to-orange-500" : "rounded-ss-none bg-white"
                 }`}
               />}
       </div>

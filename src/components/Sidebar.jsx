@@ -1,6 +1,7 @@
+import React, { useState } from 'react'
+
 import Chats from '../components/Chats'
 import Navbar from '../components/Navbar'
-import React from 'react'
 import Search from '../components/Search'
 
 const Sidebar = () => {
