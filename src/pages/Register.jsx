@@ -1,3 +1,4 @@
+import {Link, useNavigate} from 'react-router-dom';
 import React, { useState } from "react";
 import { auth, db, storage } from "../firebase";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
@@ -9,8 +10,10 @@ import {
 } from "firebase/storage";
 
 import addImg from "../assets/addimage.png";
+import colorlogo from '../assets/colorlogo.png';
 
 const Register = () => {
+  const navigate=useNavigate();
   const [error, setError] = useState(null);
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -41,6 +44,9 @@ const Register = () => {
                 email,
                 photoURL: downloadURL,
               });
+              await setDoc(doc(db, "userChats", res.user.uid), {});
+              navigate('/')
+              
             } catch (error) {
               console.log('error uploading...',error)
               setError(error.code)
@@ -61,10 +67,13 @@ const Register = () => {
   return (
     <div className="f-container bg-gradient-to-br from-amber-300 to-orange-400 h-svh flex justify-center items-center">
       <div className="f-wrapper bg-white py-5 px-16 rounded-lg flex flex-col gap-3 items-center shadow-xl">
-        <span className="logo text-transparent font-bold text-4xl bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text">
-          Sandesh
-        </span>
-        <span className="title text-amber-400 text-xl">Register</span>
+        <div className="flex gap-4 items-center">
+          <img src={colorlogo} alt="" className="h-10"/>
+          <span className="logo text-transparent font-bold text-4xl bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text">
+            Sandesh
+          </span>
+        </div>
+        <span className="title text-amber-500 text-xl">Register</span>
         <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
           <input
             className="w-64 p-4 border-b border-b-amber-300 outline-none"
@@ -101,7 +110,7 @@ const Register = () => {
           </button>
           {error && <p className=" text-red-600">{error}</p>}
           <p className=" mt-3 text-amber-500 text-lg">
-            You do have an account? Login
+            You do have an account? <Link to='/login' className="underline hover:text-orange-500">Log in</Link>.
           </p>
         </form>
       </div>

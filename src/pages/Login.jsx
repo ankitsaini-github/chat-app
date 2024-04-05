@@ -1,16 +1,50 @@
-import React from 'react'
+import { Link, useNavigate } from "react-router-dom";
+import React, { useState } from 'react'
+
+import { auth } from "../firebase";
+import colorlogo from '../assets/colorlogo.png';
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 const Login = () => {
+  const navigate=useNavigate();
+  const [error, setError] = useState(null);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError(null);
+
+    const email = e.target[0].value;
+    const password = e.target[1].value;
+
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      navigate("/")
+      
+      console.log('user logged in !')
+      setError(null)
+    } catch (error) {
+      console.log('full error === ',error)
+      console.log("err is = ", error.code);
+      setError(error.code);
+    }
+  };
+
   return (
     <div className='f-container bg-gradient-to-br from-amber-300 to-orange-400 h-svh flex justify-center items-center'>
       <div className='f-wrapper bg-white py-5 px-16 rounded-lg flex flex-col gap-3 items-center shadow-xl'>
-        <span className="logo text-transparent font-bold text-4xl bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text">Sandesh</span>
-        <span className="title text-amber-400 text-xl">Log In</span>
-        <form className='flex flex-col gap-4'>
-          <input className='w-64 p-4 border-b border-b-amber-300 outline-none' type='email' placeholder='Email'/>
-          <input className='w-64 p-4 border-b border-b-amber-300 outline-none' type='password' placeholder='Password'/>
+        <div className="flex gap-4 items-center">
+          <img src={colorlogo} alt="" className="h-10"/>
+          <span className="logo text-transparent font-bold text-4xl bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text">
+            Sandesh
+          </span>
+        </div>
+        <span className="title text-amber-500 text-xl">Log In</span>
+        <form className='flex flex-col gap-4' onSubmit={handleSubmit}>
+          <input className='w-64 p-4 border-b border-b-amber-300 outline-none' type='email' placeholder='Email' autoComplete=""/>
+          <input className='w-64 p-4 border-b border-b-amber-300 outline-none' type='password' placeholder='Password' autoComplete=""/>
           <button className='text-white bg-gradient-to-br from-amber-400 to-orange-500 p-3 font-bold cursor-pointer rounded-md mt-4'>Log in</button>
-          <p className=' mt-3 text-amber-500 text-lg'>You don't have an account? Signup</p>
+          {error && <p className=" text-red-600">{error}</p>}
+          <p className=' mt-3 text-amber-500 text-lg'>You don't have an account? <Link to='/register' className="underline hover:text-orange-500">Register now</Link>.</p>
         </form>
       </div>
     </div>
