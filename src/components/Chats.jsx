@@ -5,7 +5,7 @@ import { AuthContext } from '../context/AuthContext';
 import { ChatContext } from "../context/ChatContext";
 import { db } from '../firebase';
 
-const Chats = () => {
+const Chats = ({openChat}) => {
   const [chats, setChats] = useState([]);
   const { currentUser } = useContext(AuthContext);
   
@@ -27,10 +27,11 @@ const Chats = () => {
   
   const handleSelect = (u) => {
     dispatch({ type: "CHANGE_USER", payload: u });
+    openChat();
   };
   
   return (
-    <div className='chats'>
+    <div className='chats overflow-y-scroll'>
       {Object.entries(chats)?.sort((a,b)=>b[1].date - a[1].date).map((chat) => (
         <div className="userchat p-3 flex items-center gap-4 text-slate-800 cursor-pointer hover:bg-slate-300" key={chat[0]} onClick={() => handleSelect(chat[1].userInfo)}>
           <img

@@ -80,7 +80,7 @@ const ChatInput = () => {
       <div className="send flex items-center gap-4">
         {/* <img src={attatch} alt="" className="h-6 w-6 cursor-pointer" /> */}
         <input type="file" id="uploadImage" className="hidden" onChange={(e) => setImg(e.target.files[0])}/>
-        <label htmlFor="uploadImage block">
+        <label htmlFor="uploadImage">
           <img src={addimg} alt="" className="h-6 w-6 cursor-pointer" />
         </label>
         <button
