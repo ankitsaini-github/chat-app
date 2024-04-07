@@ -18,7 +18,7 @@ const Login = () => {
 
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      navigate("/")
+      navigate("/home")
       
       console.log('user logged in !')
       setError(null)
@@ -32,7 +32,7 @@ const Login = () => {
   return (
     <div className='f-container bg-gradient-to-br from-amber-300 to-orange-400 h-svh flex justify-center items-center relative'>
       <div className='f-wrapper bg-white py-5 px-16 rounded-lg flex flex-col gap-3 items-center shadow-xl'>
-        <div className="flex gap-4 items-center">
+        <div className="flex gap-4 items-center cursor-pointer" onClick={()=>{navigate('/')}}>
           <img src={colorlogo} alt="" className="h-10"/>
           <span className="logo text-transparent font-bold text-4xl bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text">
             Sandesh

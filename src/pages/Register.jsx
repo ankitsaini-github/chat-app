@@ -23,6 +23,10 @@ const Register = () => {
     const email = e.target[1].value;
     const password = e.target[2].value;
     const file = e.target[3].files[0];
+    if(!file){
+      setError('Avatar not added')
+      return;
+    }
 
     try {
       const res = await createUserWithEmailAndPassword(auth, email, password);
@@ -45,7 +49,7 @@ const Register = () => {
                 photoURL: downloadURL,
               });
               await setDoc(doc(db, "userChats", res.user.uid), {});
-              navigate('/')
+              navigate('/home')
               
             } catch (error) {
               console.log('error uploading...',error)
@@ -67,7 +71,7 @@ const Register = () => {
   return (
     <div className="f-container bg-gradient-to-br from-amber-300 to-orange-400 h-svh flex justify-center items-center">
       <div className="f-wrapper bg-white py-5 px-16 rounded-lg flex flex-col gap-3 items-center shadow-xl">
-        <div className="flex gap-4 items-center">
+        <div className="flex gap-4 items-center cursor-pointer" onClick={()=>{navigate('/')}}>
           <img src={colorlogo} alt="" className="h-10"/>
           <span className="logo text-transparent font-bold text-4xl bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text">
             Sandesh
@@ -80,6 +84,7 @@ const Register = () => {
             type="text"
             placeholder="Display Name"
             autoComplete=""
+            required
           />
           <input
             className="w-64 p-4 border-b border-b-amber-300 outline-none"
